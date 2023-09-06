@@ -10,9 +10,14 @@
     <!--Tailwind CSS-->
     @vite('resources/css/app.css')
 </head>
+
 <body>
+    <nav class="py-3 px-5 bg-primary">
+        <h1>Dashboard</h1>
+    </nav>
     <main>
         @yield('content')
     </main>
 </body>
+
 </html>
