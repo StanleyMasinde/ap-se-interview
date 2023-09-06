@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
 Route::prefix('admin')->group(function () {
-    Route::post('/login', [AuthController::class, 'login'])
+    Route::get('login', [DashboardController::class, 'loginView']);
+    Route::post('login', [AuthController::class, 'login'])
         ->middleware('guest:admin')
         ->name('admin.login');
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');

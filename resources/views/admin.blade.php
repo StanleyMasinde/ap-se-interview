@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <title>Admin login</title>
 
     <!--Tailwind CSS-->
     @vite('resources/css/app.css')
@@ -17,6 +13,7 @@
 
 <body>
     <main class=" h-screen grid place-content-center">
+        <h1 class=" text-xl">Admin Login</h1>
         <div class=" w-72">
             <form action="{{ route('admin.login') }}" method="post" class="flex flex-col gap-2">
                 @csrf
