@@ -35,6 +35,9 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard/monthly', [DashboardController::class, 'monthly'])
         ->name('admin.monthly')
         ->middleware('auth:admin');
+    Route::get('subscription/{subscription}', [DashboardController::class, 'showSubscription'])
+        ->middleware('auth:admin')
+        ->name('subscription.show');
 });
 
 Route::prefix('user')->group(function () {

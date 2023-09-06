@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use App\Models\User;
+use Dotenv\Store\File\Reader;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -88,5 +89,16 @@ class DashboardController extends Controller
             'subscriptions' => $subscriptions,
             'status' => $status
         ]);
+    }
+
+    /**
+     * Show a single subscription.
+     */
+    public function showSubscription(Request $request, Subscription $subscription)
+    {
+        return view('subscription.show', [
+            'subscription' =>$subscription->load('user')
+        ]);
+        
     }
 }
