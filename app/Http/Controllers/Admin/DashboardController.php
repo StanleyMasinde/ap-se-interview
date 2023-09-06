@@ -28,11 +28,13 @@ class DashboardController extends Controller
 
         if ($status) {
             $subscriptions = Subscription::whereStatus($status)->with('user')->get();
+        } else {
+            $subscriptions = Subscription::with('user')->latest()->get();
         }
-        $subscriptions = Subscription::with('user')->latest()->get();
-        
+
         return view('admin.index', [
-            'subscriptions' => $subscriptions
+            'subscriptions' => $subscriptions,
+            'status' => $status
         ]);
     }
 }
