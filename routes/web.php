@@ -26,7 +26,15 @@ Route::prefix('admin')->group(function () {
     Route::post('login', [AuthController::class, 'login'])
         ->middleware('guest:admin')
         ->name('admin.login');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('admin.all')
+        ->middleware('auth:admin');
+    Route::get('dashboard/annual', [DashboardController::class, 'annual'])
+        ->name('admin.annual')
+        ->middleware('auth:admin');
+    Route::get('dashboard/monthly', [DashboardController::class, 'monthly'])
+        ->name('admin.monthly')
+        ->middleware('auth:admin');
 });
 
 Route::prefix('user')->group(function () {

@@ -37,4 +37,56 @@ class DashboardController extends Controller
             'status' => $status
         ]);
     }
+
+    /**
+     * Filter by annual subscriptions
+     */
+    public function annual(Request $request)
+    {
+        $status = $request->input('status');
+        $subscriptions = [];
+
+        if ($status) {
+            $subscriptions = Subscription::whereStatus($status)
+                ->whereType('annual')
+                ->with('user')
+                ->get();
+        } else {
+            $subscriptions = Subscription::with('user')
+                ->whereType('annual')
+                ->latest()
+                ->get();
+        }
+
+        return view('admin.index', [
+            'subscriptions' => $subscriptions,
+            'status' => $status
+        ]);
+    }
+
+    /**
+     * Filter by monthly subscriptions
+     */
+    public function monthly(Request $request)
+    {
+        $status = $request->input('status');
+        $subscriptions = [];
+
+        if ($status) {
+            $subscriptions = Subscription::whereStatus($status)
+                ->whereType('monthly')
+                ->with('user')
+                ->get();
+        } else {
+            $subscriptions = Subscription::with('user')
+                ->whereType('monthly')
+                ->latest()
+                ->get();
+        }
+
+        return view('admin.index', [
+            'subscriptions' => $subscriptions,
+            'status' => $status
+        ]);
+    }
 }
