@@ -38,6 +38,7 @@ Route::prefix('admin')->group(function () {
     Route::get('subscription/{subscription}', [DashboardController::class, 'showSubscription'])
         ->middleware('auth:admin')
         ->name('subscription.show');
+    Route::post('logout', [DashboardController::class, 'logout'])->name('admin.logout');
 });
 
 Route::prefix('user')->group(function () {
@@ -48,4 +49,7 @@ Route::prefix('user')->group(function () {
 
     // subscription
     Route::post('subscribe', [UserDashboardController::class, 'subscribe'])->name('user.subscribe');
+
+    // log out
+    Route::post('logout', [UserDashboardController::class, 'logout'])->name('user.logout');
 });

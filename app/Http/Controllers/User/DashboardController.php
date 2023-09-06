@@ -37,4 +37,13 @@ class DashboardController extends Controller
 
         return back()->with('success', 'Subscription added');
     }
+
+    /**
+     * Log a user out
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }

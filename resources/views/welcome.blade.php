@@ -17,6 +17,8 @@
 
 <body>
     <main class=" h-screen grid place-content-center">
+        <h1 class="text-xl">User Login</h1>
+        <a class="underline text-primary" href="/admin/login">Login as admin</a>
         <div class=" w-72">
             <form action="{{ route('user.login') }}" method="post" class="flex flex-col gap-2">
                 @csrf

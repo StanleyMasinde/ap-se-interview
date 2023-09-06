@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use App\Models\User;
+use Auth;
 use Dotenv\Store\File\Reader;
 use Illuminate\Http\Request;
 
@@ -100,5 +101,15 @@ class DashboardController extends Controller
             'subscription' =>$subscription->load('user')
         ]);
         
+    }
+
+    /**
+     * Log an admin out
+     */
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect('/');
     }
 }
