@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('admin')->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])
+        ->middleware('guest:admin')
+        ->name('admin.login');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
 });
