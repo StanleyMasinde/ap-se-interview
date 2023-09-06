@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the current user's sucbscription
+     */
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
 }

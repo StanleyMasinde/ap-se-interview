@@ -18,7 +18,7 @@
 <body>
     <main class=" h-screen grid place-content-center">
         <div class=" w-72">
-            <form action="{{ route('user.login') }}" method="post" class="flex flex-col gap-2">
+            <form action="{{ route('admin.login') }}" method="post" class="flex flex-col gap-2">
                 @csrf
                 <div>
                     <label for="email">E-mail</label>
