@@ -28,9 +28,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
 });
 
-Route::prefix('/user')->group(function () {
+Route::prefix('user')->group(function () {
     Route::post('login', [UserAuthController::class, 'login'])
         ->middleware('guest')
         ->name('user.login');
     Route::get('dashboard', [UserDashboardController::class, 'index'])->middleware('auth');
+
+    // subscription
+    Route::post('subscribe', [UserDashboardController::class, 'subscribe'])->name('user.subscribe');
 });
